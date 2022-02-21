@@ -2,6 +2,7 @@ import React from 'react';
 import {FilterValuesType} from "./App";
 
 type ControlButtonType = {
+    filter: FilterValuesType
     changeFilter: (filter: FilterValuesType) => void
 }
 
@@ -19,9 +20,15 @@ const ControlButton = (props: ControlButtonType) => {
     */
     return (
         <div>
-            <button onClick={onClickSetFilter("all")}>All</button>
-            <button onClick={onClickSetFilter("active")}>Active</button>
-            <button onClick={onClickSetFilter("completed")}>Completed</button>
+            <button
+                className={props.filter === "all" ? "button-active" : ""}
+                onClick={onClickSetFilter("all")}>All</button>
+            <button
+                className={props.filter === "active" ? "button-active" : ""}
+                onClick={onClickSetFilter("active")}>Active</button>
+            <button
+                className={props.filter === "completed" ? "button-active" : ""}
+                onClick={onClickSetFilter("completed")}>Completed</button>
         </div>
     );
 };
